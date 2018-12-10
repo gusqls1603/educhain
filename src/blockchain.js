@@ -58,6 +58,7 @@ function findBlock(nextIndex, previoushash, nextTimestamp, blockData, difficulty
         /*
             PoW (Proof-of-Work)
             : You need to find a suitable nonce value.
+            : The difficulty property defines how many prefixing zeros the block hash must have.
         */
     }
 }
@@ -93,10 +94,10 @@ function getAdjustedDifficulty(latestBlock, aBlockchain) {
 }
 
 /*
-// Only use this function as you need it.
-function hashMatchesDifficulty(hash, difficulty) {
+    // Only use this function as you need it.
+    function hashMatchesDifficulty(hash, difficulty) {
 
-}
+    }
 */
 
 // get hash
@@ -149,8 +150,8 @@ function isValidChain(blockchainToValidate) {
 function replaceChain(newBlocks) {
     if (
         /*
-        Longest Chain Rule
-        : Also you need a chain-validation.
+            Longest Chain Rule
+            : Also you need a chain-validation.
         */
     ) {
         const nw = require("./network");
