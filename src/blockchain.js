@@ -55,11 +55,10 @@ function generateNextBlock(blockData) {
 function findBlock(nextIndex, previoushash, nextTimestamp, blockData, difficulty) {
     var nonce = 0;
     while (true) {
-        var hash = calculateHash(nextIndex, previoushash, nextTimestamp, blockData, difficulty, nonce);
-        if (hashMatchesDifficulty(hash, difficulty)) {
-            return new Block(nextIndex, previoushash, nextTimestamp, blockData, hash, difficulty, nonce);
-        }
-        nonce++;
+        /*
+            PoW (Proof-of-Work)
+            : You need to find a suitable nonce value.
+        */
     }
 }
 
@@ -93,11 +92,12 @@ function getAdjustedDifficulty(latestBlock, aBlockchain) {
     }
 }
 
+/*
+// Only use this function as you need it.
 function hashMatchesDifficulty(hash, difficulty) {
-    const hashBinary = ut.hexToBinary(hash);
-    const requiredPrefix = '0'.repeat(difficulty);
-    return hashBinary.startsWith(requiredPrefix);
+
 }
+*/
 
 // get hash
 function calculateHashForBlock(block) {
@@ -138,25 +138,21 @@ function isValidNewBlock(newBlock, previousBlock) {
 
 // validation test of blockchain
 function isValidChain(blockchainToValidate) {
-    if (JSON.stringify(blockchainToValidate[0]) !== JSON.stringify(getGenesisBlock())) {
-        return false;
-    }
-    var tempBlocks = [blockchainToValidate[0]];
-    for (var i = 1; i < blockchainToValidate.length; i++) {
-        if (isValidNewBlock(blockchainToValidate[i], tempBlocks[i - 1])) {
-            tempBlocks.push(blockchainToValidate[i]);
-        }
-        else {
-            return false;
-        }
-    }
-    return true;
+    /*
+        Verify Blockchain
+        : You might use the above 'isValidNewBlock' function.
+    */
 }
 
 // WARNING!! you can modify the following implementaion according to your own consensus design.
 // current consensus: the longest chain rule.
 function replaceChain(newBlocks) {
-    if (isValidChain(newBlocks) && newBlocks.length > blockchain.length) {
+    if (
+        /*
+        Longest Chain Rule
+        : Also you need a chain-validation.
+        */
+    ) {
         const nw = require("./network");
 
         // console.log("Received blockchain is valid. Replacing current blockchain with received blockchain");
